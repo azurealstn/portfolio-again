@@ -27,3 +27,35 @@ document.addEventListener('scroll', () => {
 
   homeContainer.style.opacity = 1 - scrollY / homeHeight;
 });
+
+/**
+ * Home 섹션의 반정도 넘어가면 화살표 아이콘 보여주기
+ */
+const arrowUp = document.querySelector('.arrow-up');
+
+document.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  if (scrollY >= homeHeight / 2) {
+    arrowUp.style.opacity = '1';
+  } else {
+    arrowUp.style.opacity = '0';
+  }
+});
+
+/**
+ * 모바일버전 메뉴 구현
+ */
+const headerToggle = document.querySelector('.header__toggle');
+const headerMenu = document.querySelector('.header__menu');
+
+headerToggle.addEventListener('click', () => {
+  headerMenu.classList.toggle('open');
+});
+
+/**
+ * Navbar 메뉴 클릭시 메뉴를 자동으로 닫아줌
+ */
+headerMenu.addEventListener('click', () => {
+  headerMenu.classList.remove('open');
+});
